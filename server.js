@@ -30,6 +30,10 @@ const Stock = mongoose.model("Stock", stockSchema, "stocks");
 //Test function to verify if the data exists
 async function testConnection () {
     try{
+        console.log('MongoDB URI:', process.env.MONGO_DB_URI ? 'Set' : 'Not set');
+
+
+
         const count = await Stock.countDocuments();
         console.log(`Found ${count} documents in the stock collection`);
 
@@ -39,6 +43,7 @@ async function testConnection () {
     }
     catch(error){
         console.error('Error testing connection:', error);
+        console.error('Error details:', error.message);
     }
 }
 
